@@ -8,14 +8,25 @@ import org.springframework.stereotype.Component;
 public class DataLoader implements CommandLineRunner {
 
     private final RunnerRepository runnerRepository;
+    private final SponsorRepository sponsorRepository;
 
     @Autowired
-    public DataLoader(RunnerRepository runnerRepository) {
+    public DataLoader(RunnerRepository runnerRepository, SponsorRepository sponsorRepository) {
         this.runnerRepository = runnerRepository;
+        this.sponsorRepository = sponsorRepository;
     }
 
     @Override
     public void run(String... args) {
+        // Sponzorok inicializálása
+        SponsorEntity sponsorEntity1 = new SponsorEntity();
+        sponsorEntity1.setSponsorName("Adidas");
+        sponsorRepository.save(sponsorEntity1);
+
+        SponsorEntity sponsorEntity2 = new SponsorEntity();
+        sponsorEntity2.setSponsorName("Nike");
+        sponsorRepository.save(sponsorEntity2);
+
         // 1. futó inicializálása
         RunnerEntity runnerEntity = new RunnerEntity();
         runnerEntity.setRunnerName("Tomi");
