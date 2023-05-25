@@ -62,7 +62,7 @@ public class DataLoader implements CommandLineRunner {
         RunnerEntity runnerEntity3 = new RunnerEntity();
         runnerEntity3.setRunnerName("Feri");
         runnerEntity3.setAveragePace(300);
-        runnerEntity3.setRunnerHeight(172);
+        runnerEntity3.setRunnerHeight(175);
 
         LapTimeEntity laptime5 = new LapTimeEntity();
         laptime5.setLapNumber(1);

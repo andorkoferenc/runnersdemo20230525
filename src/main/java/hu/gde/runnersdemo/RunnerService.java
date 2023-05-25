@@ -28,4 +28,17 @@ public class RunnerService {
             return -1.0;
         }
     }
+
+    public String getHeigthestRunnerName() {
+        List<RunnerEntity> runners = runnerRepository.findAll();
+        int maxHeight = 0;
+        String runnerName = "";
+        for (RunnerEntity runner : runners) {
+            if(runner.getRunnerHeight() > maxHeight) {
+                maxHeight = runner.getRunnerHeight();
+                runnerName = runner.getRunnerName();
+            }
+        }
+        return runnerName;
+    }
 }

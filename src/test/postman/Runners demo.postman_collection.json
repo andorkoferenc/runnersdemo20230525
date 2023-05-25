@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "3280806a-0a27-445f-b66a-efc67205ca2f",
+		"_postman_id": "a7c8bab4-4b4a-438d-9f95-abb9f2ed7273",
 		"name": "Runners demo",
 		"description": "Runners Demo postman collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "9701363"
+		"_exporter_id": "4082850"
 	},
 	"item": [
 		{
@@ -70,6 +70,14 @@
 						"averagelaptime"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "getHeightestRunner",
+			"request": {
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		},
