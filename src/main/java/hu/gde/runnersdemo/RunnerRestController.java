@@ -14,11 +14,13 @@ public class RunnerRestController {
     @Autowired
     private LapTimeRepository lapTimeRepository;
     private RunnerRepository runnerRepository;
+    private SponsorRepository sponsorRepository;
 
     @Autowired
-    public RunnerRestController(RunnerRepository runnerRepository, LapTimeRepository lapTimeRepository) {
+    public RunnerRestController(RunnerRepository runnerRepository, LapTimeRepository lapTimeRepository, SponsorRepository sponsorRepository) {
         this.runnerRepository = runnerRepository;
         this.lapTimeRepository = lapTimeRepository;
+        this.sponsorRepository = sponsorRepository;
     }
 
     @GetMapping("/{id}")
@@ -75,6 +77,7 @@ public class RunnerRestController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Runner with ID " + id + " not found");
         }
     }
+
     public static class LapTimeRequest {
         private int lapTimeSeconds;
 
@@ -84,6 +87,34 @@ public class RunnerRestController {
 
         public void setLapTimeSeconds(int lapTimeSeconds) {
             this.lapTimeSeconds = lapTimeSeconds;
+        }
+    }
+
+    @PostMapping("/{id}/setsponsor")
+    public ResponseEntity setSponsor(@PathVariable Long id, @RequestBody SponsorRequest sponsorRequest) {
+        RunnerEntity runner = runnerRepository.findById(id).orElse(null);
+        if (runner != null) {
+            SponsorEntity sponsor = new SponsorEntity();
+            sponsor.setSponsorName(sponsorRequest.getSponsorName());
+            //lapTime.setLapNumber(runner.getLaptimes().size() + 1);
+            //lapTime.setRunner(runner);
+            sponsorRepository.save(sponsor);
+            runner.setSponsor(sponsor);
+            runnerRepository.save(runner);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Runner with ID " + id + " not found");
+        }
+    }
+    public static class SponsorRequest {
+        private String sponsorName;
+
+        public String getSponsorName() {
+            return sponsorName;
+        }
+
+        public void setSponsorName(String sponsorName) {
+            this.sponsorName = sponsorName;
         }
     }
 
