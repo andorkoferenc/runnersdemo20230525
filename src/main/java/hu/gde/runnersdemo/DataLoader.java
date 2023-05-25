@@ -46,6 +46,8 @@ public class DataLoader implements CommandLineRunner {
         runnerEntity.getLaptimes().add(laptime1);
         runnerEntity.getLaptimes().add(laptime2);
 
+        runnerEntity.setSponsor(sponsorEntity1);
+
         runnerRepository.save(runnerEntity);
 
         // 2. futó inicializálása
@@ -67,6 +69,8 @@ public class DataLoader implements CommandLineRunner {
         runnerEntity2.getLaptimes().add(laptime3);
         runnerEntity2.getLaptimes().add(laptime4);
 
+        runnerEntity2.setSponsor(sponsorEntity1);
+
         runnerRepository.save(runnerEntity2);
 
         // 3. futó incializálása
@@ -87,6 +91,8 @@ public class DataLoader implements CommandLineRunner {
 
         runnerEntity3.getLaptimes().add(laptime5);
         runnerEntity3.getLaptimes().add(laptime6);
+
+        runnerEntity3.setSponsor(sponsorEntity2);
 
         runnerRepository.save(runnerEntity3);
     }
