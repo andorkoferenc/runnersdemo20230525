@@ -13,6 +13,7 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Height</th>
             <th>Average Pace</th>
             <th>Action</th>
         </tr>
@@ -21,6 +22,7 @@
         <tr th:each="runner : ${runners}">
             <td th:text="${runner.runnerId}"></td>
             <td th:text="${runner.runnerName}"></td>
+            <td th:text="${runner.runnerHeight}"></td>
             <td th:text="${runner.averagePace}"></td>
             <td>
                 <a th:href="@{/runner/{id}(id=${runner.runnerId})}" class="btn btn-primary">View</a>
@@ -28,6 +30,13 @@
         </tr>
         </tbody>
     </table>
+    <hr>
+    <div>
+        <ul>
+            <li>A futók átlagmagassága: <span th:text="${averageHeight}">átlagmagasság érték</span></li>
+            <li>A legmagasabb futó neve : <span th:text="${heightestRunnerName}"></span> <small>(ez az érték GET REST API-val is lekérdezhető)</small></li>
+        </ul>
+    </div>
 </div>
 </body>
 </html>
